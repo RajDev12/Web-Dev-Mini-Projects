@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple eCommerce System</title>
+    <style>
+        *{
+            background-color: rgb(202, 211, 219);
+            
+        }
+        #products {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+        }
+
+        img {
+            height: 200px;
+            width: 300px;
+            border: 2px solid rgb(178, 163, 163);
+            border-radius: 8px ;
+        }
+        .eachProduct{
+            border: 2px solid gray;
+            border-radius: 8px ;
+        }
+        #cart{
+            margin-left: 45vw;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Simple eCommerce Store</h1>
+    <h2>Products</h2>
+
+    <div id="products">
+
+        <div class="eachProduct">
+            <img src="images/allsoft.jpg" alt="">
+            <p>Product 1: $10</p>
+            <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
+        </div>
+        <div class="eachProduct">
+            <img src="images/Data-Science.jpg" alt="">
+            <p>Product 2: $20</p>
+            <button onclick="addToCart('Product 2', 20)">Add to Cart</button>
+        </div>
+        <div class="eachProduct">
+            <img src="images/html-illustration.png" alt="">
+            <p>Product 3: $30</p>
+            <button onclick="addToCart('Product 3', 30)">Add to Cart</button>
+        </div>
+    </div>
+
+    <div id="cart">
+        <h2>Cart</h2>
+        <ul id="cartItems"></ul>
+        <p>Total: $<span id="total">0</span></p>
+    </div>
+
+    <script>
+        var cart = [];
+        var total = 0;
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            total += price;
+            displayCart();
+        }
+
+        function displayCart() {
+            const cartItems = document.getElementById('cartItems');
+            cartItems.innerHTML = ''; // Clear the list before displaying updated cart
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item.name + " - $" + item.price;
+                cartItems.appendChild(li);
+            });
+            document.getElementById('total').textContent = total;
+        }
+    </script>
+</body>
+
+</html>
