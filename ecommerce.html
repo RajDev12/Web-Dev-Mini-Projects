@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple eCommerce System</title>
     <style>
-        *{
+        * {
             background-color: rgb(202, 211, 219);
-            
+
         }
+
         #products {
             display: flex;
             justify-content: space-between;
@@ -21,13 +22,15 @@
             height: 200px;
             width: 300px;
             border: 2px solid rgb(178, 163, 163);
-            border-radius: 8px ;
+            border-radius: 8px;
         }
-        .eachProduct{
+
+        .eachProduct {
             border: 2px solid gray;
-            border-radius: 8px ;
+            border-radius: 8px;
         }
-        #cart{
+
+        #cart {
             margin-left: 45vw;
         }
     </style>
@@ -40,19 +43,19 @@
     <div id="products">
 
         <div class="eachProduct">
-            <img src="images/allsoft.jpg" alt="">
+            <img src="images/allsoft.jpg" alt="img1">
             <p>Product 1: $10</p>
-            <button onclick="addToCart('Product 1', 10)">Add to Cart</button>
+            <button onclick="addToCart('Product 1', 10, '/images/allsoft.jpg')">Add to Cart</button>
         </div>
         <div class="eachProduct">
-            <img src="images/Data-Science.jpg" alt="">
+            <img src="images/Data-Science.jpg" alt="img2">
             <p>Product 2: $20</p>
-            <button onclick="addToCart('Product 2', 20)">Add to Cart</button>
+            <button onclick="addToCart('Product 2', 20, '/images/Data-Science.jpg')">Add to Cart</button>
         </div>
         <div class="eachProduct">
-            <img src="images/html-illustration.png" alt="">
+            <img src="images/html-illustration.png" alt="img3">
             <p>Product 3: $30</p>
-            <button onclick="addToCart('Product 3', 30)">Add to Cart</button>
+            <button onclick="addToCart('Product 3', 30, '/images/html-illustration.png')">Add to Cart</button>
         </div>
     </div>
 
@@ -66,17 +69,24 @@
         var cart = [];
         var total = 0;
 
-        function addToCart(productName, price) {
-            cart.push({ name: productName, price: price });
+        function addToCart(productName, price, img) {
+            cart.push({ name: productName, price: price, image: img });
             total += price;
             displayCart();
         }
 
         function displayCart() {
             const cartItems = document.getElementById('cartItems');
+
+
             cartItems.innerHTML = ''; // Clear the list before displaying updated cart
             cart.forEach(item => {
+                const img = document.createElement('img')
                 const li = document.createElement('li');
+                img.src = item.image;
+                img.alt = item.name;
+                li.appendChild(img);
+                const p = document.createElement('p');
                 li.textContent = item.name + " - $" + item.price;
                 cartItems.appendChild(li);
             });
