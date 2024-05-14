@@ -81,13 +81,13 @@
 
             cartItems.innerHTML = ''; // Clear the list before displaying updated cart
             cart.forEach(item => {
-                const img = document.createElement('img')
                 const li = document.createElement('li');
+                const img = document.createElement('img')
                 img.src = item.image;
                 img.alt = item.name;
                 li.appendChild(img);
                 const p = document.createElement('p');
-                li.textContent = item.name + " - $" + item.price;
+                p.textContent = item.name + " - $" + item.price;
                 cartItems.appendChild(li);
             });
             document.getElementById('total').textContent = total;
