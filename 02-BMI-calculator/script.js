@@ -38,6 +38,8 @@ form.addEventListener('submit', function (e){
     }
 })
 
+//based on the result show the category of BMI i.e underweight or overweight or normal
+
 
 
 
