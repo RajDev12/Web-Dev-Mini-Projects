@@ -6,4 +6,4 @@ clock.innerText = new Date().toLocaleTimeString();
 
 setInterval(() => {
     clock.innerText = new Date().toLocaleTimeString();
-}, 1000)
+}, 3000)
